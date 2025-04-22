@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Form</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            padding: 100px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #005792;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        #name, #amount, #title, #num, #web, #edu, #status {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 5px;
+            border: 1px solid black;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>NGO/Charity Fundraising Form</h2>
+<p><strong>Selected Category:</strong> NGO/Charity</p>
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <!-- Hidden input to post the category -->
+  <input type="hidden" name="category" value="ngo">
+
+      <label>Amount required:</label>
+      <input type="number" id="amount" name="fund_raising_amount">
+
+      <label>Fund title:</label>
+      <input type="text" id="title" name="fund_title">
+
+      <label>NGO name:</label>
+      <input type="text" id="name" name="ngo_name">
+
+      <label>Registration number:</label>
+      <input type="text" id="num" name="ngo_registration_number">
+
+      <label>NGO website:</label>
+      <input type="url" id="web" name="ngo_website_url">
+
+      <label>Education qualification:</label>
+      <input type="text" id="edu" name="user_qualification">
+
+      <label>Employed status:</label>
+      <input type="text" id="status" name="user_employed_status">
+
+      <label>How did you hear about us?</label>
+      <input type="text" id="name" name="how_to_know">
+  <button type="submit">Submit</button>
+</form>
+    </div>
+</body>
+</html>

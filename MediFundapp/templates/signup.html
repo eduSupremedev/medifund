@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .signup-box {
+            background: white;
+            padding: 30px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        #full_name, #email, #password, #mobile, #creation_purpose {
+            width: 100%;
+            padding: 5px;
+            margin: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <h2>Sign Up</h2>
+
+        <form action="" method="post">
+            {% csrf_token %}
+    
+            <label for="full_name">Full Name:</label><br>
+            <input type="text" id="full_name" name="full_name" placeholder="Name" required><br><br>
+    
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br><br>
+    
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br><br>
+    
+            <label for="mobile">Mobile Number:</label><br>
+            <input type="tel" id="mobile" name="mobile" placeholder="Mobile" required><br><br>
+    
+            <label for="creation_purpose">Creation Purpose:</label><br>
+            <input type="text" id="creation_purpose" name="creation_purpose" placeholder="Purpose" required><br><br>
+    
+            <button type="submit" class="submit-btn">Next</button>
+        </form>
+    </div>
+
+</body>
+</html>

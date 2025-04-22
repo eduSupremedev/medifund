@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Fund Form</title>
+  <style>
+    .hidden { 
+      display:none;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    select, input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid black;
+      box-sizing: border-box;
+    }
+
+    select:focus,
+    input:focus,
+    textarea:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    body {
+      background-color: #cbe8f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    form {
+      background: #ffffff;
+      padding: 30px 40px;
+      margin-top: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+
+    button {
+      background: #007BFF;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+  <form action="{% url 'fund_raising_form' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <label for="category">Category:</label>
+    <select id="category" name="category" onchange="showForm()" required>
+      <option value="">-- Select --</option>
+      <option value="medical">Medical Treatment</option>
+      <option value="ngo">NGO/Charity</option>
+      <option value="other">Other Cause</option>
+    </select>
+
+    <!-- MEDICAL FORM -->
+    <div id="medical-form" class="hidden category-form">
+      <input type="hidden" name="form_type" value="medical">
+
+      <label>Fund for whom:</label>
+      <input type="text" id="name" name="fund_for">
+
+      <label>Patient full name:</label>
+      <input type="text" name="patienet_full_name">
+
+      <label>Patient age:</label>
+      <input type="number" name="patienet_age">
+
+      <label>Hospital name:</label>
+      <input type="text" name="hospital_name">
+
+      <label>Hospital city:</label>
+      <input type="text" name="hospital_location">
+
+      <label>Hospitalization status:</label>
+      <input type="text" name="hospitalization_status">
+
+      <label>Amount required:</label>
+      <input type="number" name="fund_raising_amount">
+
+      <label>Patient story:</label>
+      <textarea name="fund_purpose"></textarea>
+
+      <label>Patient current picture:</label>
+      <input type="file" name="attachments">
+
+      <label>Patient hospital documents:</label>
+      <input type="file" name="medical_documents">
+    </div>
+
+    <!-- NGO FORM -->
+    <div id="ngo-form" class="hidden category-form">
+      <input type="hidden" name="form_type" value="ngo">
+      <label>Amount required:</label><input type="number" name="fund_raising_amount">
+      <label>Fund title:</label><input type="text" name="fund_title">
+      <label>NGO name:</label><input type="text" name="ngo_name">
+      <label>Registration number:</label><input type="text" name="ngo_registration_number">
+      <label>NGO website:</label><input type="url" name="ngo_website_url">
+      <label>Education qualification:</label><input type="text" name="user_qualification">
+      <label>Employed status:</label><input type="text" name="user_employed_status">
+      <label>How did you hear about us?</label><input type="text" name="how_to_know">
+    </div>
+
+    <!-- OTHER FORM -->
+    <div id="other-form" class="hidden category-form">
+      <input type="hidden" name="form_type" value="other">
+
+      <label>Amount required:</label>
+      <input type="number" name="fund_raising_amount">
+
+      <label>Fund title:</label>
+      <input type="text" name="fund_title">
+
+      <label>For whom:</label>
+      <input type="text" name="form_whom">
+      
+      <select name="fund_for">
+        <option value="myself">Myself</option>
+        <option value="family">Family member</option>
+        <option value="friend">Friend</option>
+        <option value="pet">Pet or animal</option>
+        <option value="colleagues">Colleagues</option>
+        <option value="community">Community</option>
+        <option value="other">Other</option>
+      </select>
+      <label>Education qualification:</label>
+      <input type="text" name="user_qualification">
+
+      <label>Employed status:</label>
+      <input type="text" name="user_employed_status">
+
+      <label>How did you hear about us?</label>
+      <input type="text" name="how_to_know">
+
+      <label>Patient story:</label>
+      <textarea name="fund_purpose"></textarea>
+
+      <label>Patient current picture:</label>
+      <input type="file" name="attachments">
+
+      <label>Patient hospital documents:</label>
+      <input type="file" name="medical_documents">
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function showForm() {
+      const selectedCategory = document.getElementById("category").value;
+
+      // Hide and disable all category forms
+      document.querySelectorAll(".category-form").forEach(form => {
+        form.classList.add("hidden");
+        form.querySelectorAll("input, select, textarea").forEach(el => {
+          el.disabled = true;
+        });
+      });
+
+      // Show and enable selected form
+      if (selectedCategory) {
+        const activeForm = document.getElementById(`${selectedCategory}-form`);
+        activeForm.classList.remove("hidden");
+        activeForm.querySelectorAll("input, select, textarea").forEach(el => {
+          el.disabled = false;
+        });
+      }
+    }
+
+    // Run on page load in case the form is repopulated (like after errors)
+    window.onload = function () {
+      showForm();
+    };
+  </script>
+</body>
+</html>

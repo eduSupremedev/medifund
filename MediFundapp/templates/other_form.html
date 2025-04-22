@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Form</title>
+    <style>
+      body {
+        background-color: #f9f9f9;
+        padding: 100px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 35px 45px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        color: #2a5d9f;
+      }
+
+      p {
+        font-size: 15px;
+        margin-bottom: 25px;
+        color: #444;
+      }
+
+      form {
+        text-align: left;
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      #amount, #title, #edu, #name, #status,
+      textarea,
+      select {
+        width: 100%;
+        padding: 10px 12px;
+        margin-top: 5px;
+        border: 1px solid black;
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 15px;
+      }
+
+      button {
+        margin-top: 25px;
+        padding: 12px 25px;
+        background-color: #007bff;
+        border: none;
+        color: white;
+        font-size: 15px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Other Cause Fundraising Form</h2>
+    <p><strong>Selected Category:</strong> Other Cause</p>
+    
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- Hidden input to post the category -->
+      <input type="hidden" name="category" value="other">
+    
+      <label>Amount required:</label>
+      <input type="number" id="amount" name="fund_raising_amount">
+
+      <label>Fund title:</label>
+      <input type="text" id="title" name="fund_title">
+
+      <label>For whom:</label>
+      <select name="fund_for">
+        <option value="myself">Myself</option>
+        <option value="family">Family member</option>
+        <option value="friend">Friend</option>
+        <option value="pet">Pet or animal</option>
+        <option value="colleagues">Colleagues</option>
+        <option value="community">Community</option>
+        <option value="other">Other</option>
+      </select>
+      <label>Education qualification:</label>
+      <input type="text" id="edu" name="user_qualification">
+
+      <label>Employed status:</label>
+      <input type="text" id="status" name="user_employed_status">
+
+      <label>How did you hear about us?</label>
+      <input type="text" id="name" name="how_to_know">
+
+      <label>Patient story:</label>
+      <textarea id="name" name="fund_purpose"></textarea>
+
+      <label>Patient current picture:</label>
+      <input type="file" name="attachments">
+
+      <label>Patient hospital documents:</label>
+      <input type="file" name="medical_documents">
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+    <style>
+      body {
+        background-color: #f0f8ff;
+        padding-top: 100px;
+      }
+
+      .container {
+        max-width: 600px;
+        text-align: center;
+        margin: auto;
+      }
+
+      h2 {
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      li {
+        margin: 10px 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+        font-size: 18px;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        color: #0056b3;
+      }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Select Fundraising Category</h2>
+    <ul>
+      <li><a href="{% url 'medical_form' %}">Medical Treatment</a></li>
+      <li><a href="{% url 'ngo_form' %}">NGO/Charity</a></li>
+      <li><a href="{% url 'other_form' %}">Other Cause</a></li>
+    </ul>
+</body>
+  </div>
+</html>
