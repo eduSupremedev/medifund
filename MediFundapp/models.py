@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.db import models
 
 class User(models.Model):
@@ -209,10 +208,6 @@ class UserRole(models.Model):
     lud = models.DateTimeField(auto_now=True)  # Last Updated Date
 
 
-
-=======
-from django.db import models
-
 class User(models.Model):
     full_name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
@@ -333,6 +328,3 @@ class Student(models.Model):
     name = models.CharField(max_length=100)
     student_class = models.CharField(max_length=50)
     roll_number = models.IntegerField()
-    
-    
->>>>>>> 8ae871f (Track untracked files)
