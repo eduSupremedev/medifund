@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 """
 WSGI config for MediFund project.
 
@@ -15,7 +15,7 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MediFund.settings')
 
 application = get_wsgi_application()
-=======
+
 """
 WSGI config for MediFund project.
 
@@ -32,4 +32,4 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MediFund.settings')
 
 application = get_wsgi_application()
->>>>>>> 8ae871f (Track untracked files)
+

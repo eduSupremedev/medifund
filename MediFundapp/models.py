@@ -1,28 +1,28 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class User(models.Model):
-    full_name = models.CharField(max_length=255)
-    email = models.EmailField(unique=True)
-    mobile_number = models.CharField(max_length=15, unique=True)
-    pan_details = models.CharField(max_length=10, unique=True)
-    gender = models.CharField(max_length=1,blank=True)
-    date_of_birth = models.DateField()
-    education = models.CharField(max_length=5, blank=True)
-    occupation = models.CharField(max_length=255)
-    address = models.TextField()
+# class User(models.Model):
+#     full_name = models.CharField(max_length=255)
+#     email = models.EmailField(unique=True)
+#     mobile_number = models.CharField(max_length=15, unique=True)
+#     pan_details = models.CharField(max_length=10, unique=True)
+#     gender = models.CharField(max_length=1,blank=True)
+#     date_of_birth = models.DateField()
+#     education = models.CharField(max_length=5, blank=True)
+#     occupation = models.CharField(max_length=255)
+#     address = models.TextField()
     
-    # Additional attributes
-    attribute1 = models.TextField(null=True, blank=True)
-    attribute2 = models.TextField(null=True, blank=True)
-    attribute3 = models.TextField(null=True, blank=True)
-    attribute4 = models.TextField(null=True, blank=True)
+#     # Additional attributes
+#     attribute1 = models.TextField(null=True, blank=True)
+#     attribute2 = models.TextField(null=True, blank=True)
+#     attribute3 = models.TextField(null=True, blank=True)
+#     attribute4 = models.TextField(null=True, blank=True)
 
-    # Metadata fields
-    cb = models.CharField(max_length=255)  # Created By (Timestamp)
-    cd = models.DateTimeField(auto_now_add=True)  # Created Date
-    lub =models.CharField(max_length=255)     # Last Updated By (Timestamp)
-    lud = models.DateTimeField(auto_now=True)     # Last Updated Date
+#     # Metadata fields
+#     cb = models.CharField(max_length=255)  # Created By (Timestamp)
+#     cd = models.DateTimeField(auto_now_add=True)  # Created Date
+#     lub =models.CharField(max_length=255)     # Last Updated By (Timestamp)
+#     lud = models.DateTimeField(auto_now=True)     # Last Updated Date
 
 class MedicalLead(models.Model):
     lead_generate_by = models.CharField(max_length=255)
@@ -31,7 +31,7 @@ class MedicalLead(models.Model):
     patient_address = models.TextField()
     guardian_name = models.CharField(max_length=255)
     guardian_number = models.CharField(max_length=15)
-    patient_age = models.IntegerField()
+    patient_age = models.IntegerField(default=0)
     patient_case = models.TextField()
     claim_amount = models.DecimalField(max_digits=10, decimal_places=2)
     estimate_amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -235,7 +235,7 @@ class raising_fund_info(models.Model):
 
 class patient_page_info(models.Model):
     patient_full_name = models.CharField(null=False, max_length=255)
-    patient_age = models.IntegerField(null=False)
+    patient_age = models.IntegerField(default=0)
     hospitalisation_status = models.CharField(null=False, unique=True)
     hospital = models.CharField(null=False, max_length=35, unique=True)
     enter_city = models.CharField(null=False, max_length=35, unique=True)
