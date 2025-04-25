@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 """
 URL configuration for MediFund project.
 
@@ -22,7 +22,7 @@ urlpatterns = [
     path('',include('MediFundapp.urls')),
     path('admin/', admin.site.urls),
 ]
-=======
+
 """
 URL configuration for MediFund project.
 
@@ -46,4 +46,4 @@ urlpatterns = [
     path('',include('MediFundapp.urls')),
     path('admin/', admin.site.urls),
 ]
->>>>>>> 8ae871f (Track untracked files)
+

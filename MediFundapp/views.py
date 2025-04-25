@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from django.shortcuts import render
 
 def base(request):
@@ -6,7 +6,7 @@ def base(request):
 
 def dashboard(request):
     return render(request, 'dashboard.html')
-=======
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login
 from .models import Student
@@ -390,5 +390,4 @@ def other_form(request):
 
 
     
-        
->>>>>>> 8ae871f (Track untracked files)
+

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from django.urls import path
 from . import views
 
@@ -6,7 +6,7 @@ urlpatterns = [
     path('', views.base, name='base'),
     path('dashboard', views.dashboard, name='dashboard'),
 ]
-=======
+
 from django.urls import path, include
 
 from .import views
@@ -29,4 +29,4 @@ urlpatterns = [
     path('fundraising/other/', views.other_form, name='other_form'),
     
 ]
->>>>>>> 8ae871f (Track untracked files)
+

@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 from django.contrib import admin
 
 # Register your models here.
-=======
+
 from django.contrib import admin
 
 # Register your models here.
@@ -19,4 +19,4 @@ admin.site.register(patient_page_info)
 admin.site.register(patient_story_info)
 admin.site.register(fund_raising_form)
 admin.site.register(Login)
->>>>>>> 8ae871f (Track untracked files)
+

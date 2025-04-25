@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 """
 Django settings for MediFund project.
 
@@ -134,7 +134,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-=======
 """
 Django settings for MediFund project.
 
@@ -283,4 +282,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
->>>>>>> 8ae871f (Track untracked files)
+
