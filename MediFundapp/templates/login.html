@@ -97,7 +97,7 @@
     <div class="login-box">
         <h1>Welcome!</h1>
         <a href="{% url 'signup' %}" class="signup-btn">Sign Up for New User</a>
-        <div class="divider">or use your email</div>
+        <div class="divider">or</div>
         <form method="POST">
             {% csrf_token %}
             <input type="email" id="email" name="email" placeholder="Email" required>
