@@ -5,11 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submission Successful</title>
     <style>
-        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
     <h1>Form Submitted Successfully!</h1>
-    <a href="{% url 'patientinfo' %}">Submit another</a>
+    <h2>Medical Leads Data</h2>
+    
+    <!-- Medical Leads Table -->
+    <table>
+        <thead>
+            <tr>
+                <th>Lead Generate By</th>
+                <th>Lead Purpose</th>
+                <th>Patient Name</th>
+                <th>Patient Age</th>
+                <th>Case</th>
+                <th>Claim Amount</th>
+                <th>Estimate Amount</th>
+                <th>Estimate Date</th>
+                <th>Estimate Date</th>
+                <th>Guardian Name</th>
+                <th>Guardian Phone</th>
+                <th>Hospital Name</th>
+                <th>Doctor Phone</th>
+                <th>Case Type</th>
+                <th>Lead Source</th>
+                <th>Patient Photo</th>
+                <th>Patient ID</th>
+                <th>Prescription</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lead in medical_leads %}
+                <tr>
+                    <td>{{ lead.lead_generate_by }}</td>
+                    <td>{{ lead.lead_purpose }}</td>
+                    <td>{{ lead.patient_name }}</td>
+                    <td>{{ lead.patient_age }}</td>
+                    <td>{{ lead.patient_case }}</td>
+                    <td>{{ lead.claim_amount }}</td>
+                    <td>{{ lead.estimate_amount }}</td>
+                    <td>{{ lead.estimate_date }}</td>
+                    <td>{{ lead.guardian_name }}</td>
+                    <td>{{ lead.guardian_phone }}</td>
+                    <td>{{ lead.hospital_name }}</td>
+                    <td>{{ lead.doctor_phone }}</td>
+                    <td>{{ lead.case_type }}</td>
+                    <td>{{ lead.lead_source }}</td>
+                    <td>
+                        {% if lead.patient_pic_2 %}
+                            <img src="{{ lead.patient_pic_2.url }}" alt="Patient Photo" width="80">
+                        {% else %}
+                            No Photo
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if lead.patient_id %}
+                            <a href="{{ lead.patient_id.url }}" download>Download ID</a>
+                        {% else %}
+                            No ID
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if lead.prescription_documents %}
+                            <a href="{{ lead.prescription_documents.url }}" download>Download Prescription</a>
+                        {% else %}
+                            No File
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if lead.description_documents %}
+                            <a href="{{ lead.description_documents.url }}" download>Download Description</a>
+                        {% else %}
+                            No File
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td>No medical leads found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- <a href="{% url 'patientinfo' %}">Submit another</a> -->
 </body>
-</html>
+</html > 

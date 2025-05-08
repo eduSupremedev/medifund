@@ -105,10 +105,16 @@ def final_submit(request):
         'description_documents':  description_file,
         
         }
+    
+    request.session['all_data'] = all_data
+    
     MedicalLead.objects.create(**all_data)
+    
+    return redirect('success_page')
         
 def success_page(request):
-            return render(request, 'success.html')
+    medical_leads = MedicalLead.objects.all()
+    return render(request, 'success.html', {'medical_leads': medical_leads})
         
 def studentinfo(request):
     if request.method == 'POST':
@@ -117,7 +123,9 @@ def studentinfo(request):
         roll_number = request.POST['roll_number']
         Student.objects.create(name=name, student_class=student_class, roll_number=roll_number)
         return redirect('studentinfo')
-    return render(request, 'studentinfo.html')
+    
+    students = Student.objects.all()
+    return render(request, 'studentinfo.html', {'students': students})
         
         
 from django.shortcuts import render, redirect
